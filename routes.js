@@ -11,6 +11,7 @@ const sparepartController = require('./WorkShop/SpareParts/sparepartController')
 const spareOrderController = require('./WorkShop/SpareParts/Orders/spareOrderController')
 const emergencyController = require('./WorkShop/Emergency/emergencyController')
 const Modifications=require('./WorkShop/Bookings/Modifications/modificationController')
+const parkingAgents = require('./ParkingAgent/agentController');
 
 // Customer routes
 router.post('/registerCustomer', customers.upload, customers.registerCustomer)
@@ -106,6 +107,21 @@ router.post('/addServiceUpdate/:id',Modifications.upload, Modifications.addServi
 router.post('/viewServiceUpdateByCustId/:id', Modifications.viewServiceUpdateByCustId)
 router.post('/viewServiceUpdateByMechid/:id', Modifications.viewServiceUpdateByMechid)
 router.post('/viewServiceUpdateByserviceid/:id', Modifications.viewServiceUpdateByserviceid)
+
+
+
+
+//Parking Agents
+router.post('/registerParkingAgent', parkingAgents.upload, parkingAgents.registerParkingAgent);
+router.post('/loginParkingAgent', parkingAgents.loginParkingAgent);
+router.get('/viewParkingAgents', parkingAgents.viewParkingAgents);
+router.get('/viewParkingAgentById/:id', parkingAgents.viewParkingAgentById);
+router.put('/editParkingAgentById/:id', parkingAgents.upload, parkingAgents.editParkingAgentById);
+router.delete('/deleteParkingAgentById/:id', parkingAgents.deleteParkingAgentById);
+router.post('/forgotPwd', parkingAgents.forgotPwd);
+router.put('/approveParkingAgent/:id', parkingAgents.approveParkingAgent);
+router.put('/rejectParkingAgent/:id', parkingAgents.rejectParkingAgent);
+router.put('/viewPendingParkingAgents', parkingAgents.viewPendingParkingAgents);
 
 module.exports = router
 
