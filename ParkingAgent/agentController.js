@@ -14,6 +14,7 @@ const upload = multer({ storage: storage }).single("image");
 
 // Parking Agent Registration
 const registerParkingAgent = (req, res) => {
+  console.log("api worked 2");
   const newAgent = new ParkingAgent({
     firstname: req.body.firstname,
     lastname: req.body.lastname,
@@ -30,6 +31,7 @@ const registerParkingAgent = (req, res) => {
   newAgent
     .save()
     .then((data) => {
+      console.log(data);
       res.json({
         status: 200,
         msg: "Inserted successfully",
@@ -37,6 +39,7 @@ const registerParkingAgent = (req, res) => {
       });
     })
     .catch((err) => {
+      console.log(err);
       if (err.code == 11000) {
         return res.json({
           status: 409,
@@ -64,11 +67,17 @@ const loginParkingAgent = (req, res) => {
           msg: "No user found",
         });
       } else if (password == data.password) {
+        if (!data.adminApproved) {
+          return res.json({ status:405,msg: 'Waiting for Admin Approval !!' });
+        } if (!data.isActive) {
+          return res.json({ status:405,msg: 'You Are Currently Deactivated By Admin !!' });
+        }else{
         return res.json({
           status: 200,
           msg: "Login successful",
           data: data,
         });
+      }
       } else {
         return res.json({
           status: 401,

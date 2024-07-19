@@ -114,14 +114,14 @@ router.post('/viewServiceUpdateByserviceid/:id', Modifications.viewServiceUpdate
 //Parking Agents
 router.post('/registerParkingAgent', parkingAgents.upload, parkingAgents.registerParkingAgent);
 router.post('/loginParkingAgent', parkingAgents.loginParkingAgent);
-router.get('/viewParkingAgents', parkingAgents.viewParkingAgents);
-router.get('/viewParkingAgentById/:id', parkingAgents.viewParkingAgentById);
-router.put('/editParkingAgentById/:id', parkingAgents.upload, parkingAgents.editParkingAgentById);
-router.delete('/deleteParkingAgentById/:id', parkingAgents.deleteParkingAgentById);
+router.post('/viewParkingAgents', parkingAgents.viewParkingAgents);
+router.post('/viewParkingAgentById/:id', parkingAgents.viewParkingAgentById);
+router.post('/editParkingAgentById/:id', parkingAgents.upload, parkingAgents.editParkingAgentById);
+router.post('/deleteParkingAgentById/:id', parkingAgents.deleteParkingAgentById);
 router.post('/forgotPwd', parkingAgents.forgotPwd);
-router.put('/approveParkingAgent/:id', parkingAgents.approveParkingAgent);
-router.put('/rejectParkingAgent/:id', parkingAgents.rejectParkingAgent);
-router.put('/viewPendingParkingAgents', parkingAgents.viewPendingParkingAgents);
+router.post('/approveParkingAgent/:id', parkingAgents.approveParkingAgent);
+router.post('/rejectParkingAgent/:id', parkingAgents.rejectParkingAgent);
+router.post('/viewPendingParkingAgents', parkingAgents.viewPendingParkingAgents);
 
 module.exports = router
 
