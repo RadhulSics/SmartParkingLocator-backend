@@ -250,7 +250,7 @@ const forgotPwd = (req, res) => {
 
 // Approve Parking Agent
 const approveParkingAgent = (req, res) => {
-  ParkingAgent.findByIdAndUpdate(req.params.id, { adminApproved: true })
+  ParkingAgent.findByIdAndUpdate(req.params.id, { adminApproved: true,isActive:true })
     .then((data) => {
       res.json({
         status: 200,
