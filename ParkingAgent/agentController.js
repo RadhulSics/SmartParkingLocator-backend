@@ -69,6 +69,8 @@ const loginParkingAgent = (req, res) => {
       } else if (password == data.password) {
         if (!data.adminApproved) {
           return res.json({ status:405,msg: 'Waiting for Admin Approval !!' });
+        } if (!data.isActive) {
+          return res.json({ status:405,msg: 'You Are Currently Deactivated By Admin !!' });
         }else{
         return res.json({
           status: 200,
@@ -248,7 +250,7 @@ const forgotPwd = (req, res) => {
 
 // Approve Parking Agent
 const approveParkingAgent = (req, res) => {
-  ParkingAgent.findByIdAndUpdate(req.params.id, { adminApproved: true })
+  ParkingAgent.findByIdAndUpdate(req.params.id, { adminApproved: true,isActive:true })
     .then((data) => {
       res.json({
         status: 200,
