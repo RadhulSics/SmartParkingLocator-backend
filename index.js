@@ -13,5 +13,5 @@ const route=require('./routes')
 app.use('/vehicle_parking_locator_api',route)
 
 app.listen(4031,()=>{
-    console.log("Server created successfully at 4010");
+    console.log("Server created successfully at 4031");
 })

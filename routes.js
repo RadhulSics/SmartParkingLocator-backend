@@ -12,6 +12,7 @@ const spareOrderController = require('./WorkShop/SpareParts/Orders/spareOrderCon
 const emergencyController = require('./WorkShop/Emergency/emergencyController')
 const Modifications=require('./WorkShop/Bookings/Modifications/modificationController')
 const parkingAgents = require('./ParkingAgent/agentController');
+const parkingArea = require('./ParkingAreas/paController');
 
 // Customer routes
 router.post('/registerCustomer', customers.upload, customers.registerCustomer)
@@ -122,6 +123,15 @@ router.post('/forgotPwd', parkingAgents.forgotPwd);
 router.post('/approveParkingAgent/:id', parkingAgents.approveParkingAgent);
 router.post('/rejectParkingAgent/:id', parkingAgents.rejectParkingAgent);
 router.post('/viewPendingParkingAgents', parkingAgents.viewPendingParkingAgents);
+
+
+//parkingArea
+router.post('/createParkingArea/:id', parkingArea.createParkingArea);
+router.post('/viewParkingAreaById/:id', parkingArea.viewParkingAreaById);
+router.post('/updateParkingAreaById/:id', parkingArea.updateParkingAreaById);
+router.post('/deleteParkingAreaById/:id', parkingArea.deleteParkingAreaById);
+router.post('/viewParkingAreaByAgentId/:id', parkingArea.viewParkingAreaByAgentId);
+router.post('/viewParkingAreas', parkingArea.viewParkingAreas);
 
 module.exports = router
 
