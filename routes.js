@@ -137,16 +137,16 @@ router.post('/viewParkingAreas', parkingArea.viewParkingAreas);
 
 
 router.post('/createSlotBooking', slotBooking.createSlotBooking);
-router.get('/viewSlotBookings', slotBooking.viewSlotBookings);
-router.get('/viewSlotBookingById/:id', slotBooking.viewSlotBookingById);
-router.get('/viewSlotBookingByCustId/:id', slotBooking.viewSlotBookingByCustId);
-router.get('/viewPendingBookingReqsByAgentId/:id', slotBooking.viewPendingBookingReqsByAgentId);
-router.get('/viewTodysApprovedBookingByAgentId/:id', slotBooking.viewTodysApprovedBookingByAgentId);
-router.get('/viewTodysPendingBookingByAgentId/:id', slotBooking.viewTodysPendingBookingByAgentId);
-router.delete('/deleteSlotBookingById/:id', slotBooking.deleteSlotBookingById);
-router.patch('/approveSlotBookingById/:id', slotBooking.approveSlotBookingById);
-router.patch('/rejectSlotBookingById/:id', slotBooking.rejectSlotBookingById);
-router.patch('/checkSlotAvailability/:id', slotBooking.checkSlotAvailability);
+router.post('/viewSlotBookings', slotBooking.viewSlotBookings);
+router.post('/viewSlotBookingById/:id', slotBooking.viewSlotBookingById);
+router.post('/viewSlotBookingByCustId/:id', slotBooking.viewSlotBookingByCustId);
+router.post('/viewPendingBookingReqsByAgentId/:id', slotBooking.viewPendingBookingReqsByAgentId);
+router.post('/viewTodysApprovedBookingByAgentId/:id', slotBooking.viewTodysApprovedBookingByAgentId);
+router.post('/viewTodysPendingBookingByAgentId/:id', slotBooking.viewTodysPendingBookingByAgentId);
+router.post('/deleteSlotBookingById/:id', slotBooking.deleteSlotBookingById);
+router.post('/approveSlotBookingById/:id', slotBooking.approveSlotBookingById);
+router.post('/rejectSlotBookingById/:id', slotBooking.rejectSlotBookingById);
+router.post('/checkSlotAvailability/:id', slotBooking.checkSlotAvailability);
 
 
 
