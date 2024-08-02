@@ -13,6 +13,7 @@ const emergencyController = require('./WorkShop/Emergency/emergencyController')
 const Modifications=require('./WorkShop/Bookings/Modifications/modificationController')
 const parkingAgents = require('./ParkingAgent/agentController');
 const parkingArea = require('./ParkingAreas/paController');
+const slotBooking = require('./SlotBooking/bookigController');
 
 // Customer routes
 router.post('/registerCustomer', customers.upload, customers.registerCustomer)
@@ -133,6 +134,18 @@ router.post('/deleteParkingAreaById/:id', parkingArea.deleteParkingAreaById);
 router.post('/viewParkingAreaByAgentId/:id', parkingArea.viewParkingAreaByAgentId);
 router.post('/viewParkingAreas', parkingArea.viewParkingAreas);
 
+
+
+router.post('/createSlotBooking', slotBooking.createSlotBooking);
+router.get('/viewSlotBookings', slotBooking.viewSlotBookings);
+router.get('/viewSlotBookingById/:id', slotBooking.viewSlotBookingById);
+router.get('/viewSlotBookingByCustId/:id', slotBooking.viewSlotBookingByCustId);
+router.get('/viewPendingBookingReqsByAgentId/:id', slotBooking.viewPendingBookingReqsByAgentId);
+router.get('/viewTodysApprovedBookingByAgentId/:id', slotBooking.viewTodysApprovedBookingByAgentId);
+router.get('/viewTodysPendingBookingByAgentId/:id', slotBooking.viewTodysPendingBookingByAgentId);
+router.delete('/deleteSlotBookingById/:id', slotBooking.deleteSlotBookingById);
+router.patch('/approveSlotBookingById/:id', slotBooking.approveSlotBookingById);
+router.patch('/rejectSlotBookingById/:id', slotBooking.rejectSlotBookingById);
 module.exports = router
 
 
