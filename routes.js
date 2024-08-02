@@ -146,6 +146,10 @@ router.get('/viewTodysPendingBookingByAgentId/:id', slotBooking.viewTodysPending
 router.delete('/deleteSlotBookingById/:id', slotBooking.deleteSlotBookingById);
 router.patch('/approveSlotBookingById/:id', slotBooking.approveSlotBookingById);
 router.patch('/rejectSlotBookingById/:id', slotBooking.rejectSlotBookingById);
+router.patch('/checkSlotAvailability/:id', slotBooking.checkSlotAvailability);
+
+
+
 module.exports = router
 
 
