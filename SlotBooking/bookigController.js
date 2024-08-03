@@ -1,5 +1,5 @@
 const SlotBooking = require("./bookingSchema"); 
-
+const paSchema=require('../ParkingAreas/paSchema')
 // Create Slot Booking
 const createSlotBooking = (req, res) => {
   const newSlotBooking = new SlotBooking({
@@ -56,6 +56,34 @@ const viewSlotBookings = (req, res) => {
     });
 };
 
+//check if slots are fre
+const checkSlotAvailability = (req, res) => {
+    paSchema.findById(req.params.id)
+    
+     
+      .then((data) => {
+        if (data.slots > req.body.carCount) {
+          res.json({
+            status: 200,
+            msg: "you can approve parking",
+            data: true,
+          });
+        } else {
+          res.json({
+            status: 405,
+            msg: "no slots available",
+            data:false
+          });
+        }
+      })
+      .catch((err) => {
+        res.json({
+          status: 500,
+          msg: "Error obtaining data",
+          Error: err,
+        });
+      });
+  };
 // View Slot Booking by ID
 const viewSlotBookingById = (req, res) => {
   SlotBooking.findById(req.params.id)
@@ -283,6 +311,35 @@ const approveSlotBookingById = (req, res) => {
         });
       });
   };
+
+
+  const viewApprovedBookingByAgentId = (req, res) => {
+    SlotBooking.find({agentId:req.params.id,status:'approved'})
+      .populate('paId')
+      .populate('custId')
+      .populate('agentId')
+      .then((data) => {
+        if (data) {
+          res.json({
+            status: 200,
+            msg: "Data obtained successfully",
+            data: data,
+          });
+        } else {
+          res.json({
+            status: 404,
+            msg: "Slot booking not found",
+          });
+        }
+      })
+      .catch((err) => {
+        res.json({
+          status: 500,
+          msg: "Error obtaining data",
+          Error: err,
+        });
+      });
+  };
   
 
   
@@ -296,5 +353,7 @@ module.exports = {
   viewTodysApprovedBookingByAgentId,
   viewTodysPendingBookingByAgentId,
   approveSlotBookingById,
-  rejectSlotBookingById
+  rejectSlotBookingById,
+  checkSlotAvailability,
+  viewApprovedBookingByAgentId
 };
