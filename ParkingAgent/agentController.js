@@ -1,6 +1,6 @@
 const ParkingAgent = require("./agentSchema");
 const multer = require("multer");
-
+const bookingSchema=require('../SlotBooking/bookingSchema')
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "./upload");
@@ -58,13 +58,9 @@ const registerParkingAgent = (req, res) => {
 // Parking Agent Login
 const loginParkingAgent = (req, res) => {
   const { email, password } = req.body;
-console.log('log',req.body);
 
   ParkingAgent.findOne({ email })
-
     .then((data) => {
-      console.log('data',data);
-      
       if (!data) {
         return res.json({
           status: 405,
@@ -206,27 +202,17 @@ const viewParkingAgentById = (req, res) => {
 };
 
 // Delete Parking Agent by ID
-const deleteParkingAgentById = (req, res) => {
-  ParkingAgent.findByIdAndUpdate(req.params.id,{isActive:false})
-    .then((data) => {
-      res.json({
-        status: 200,
-        msg: "Data removed successfully",
-        data: data,
-      });
-    })
-    .catch((err) => {
-      res.json({
-        status: 500,
-        msg: "Error deleting data",
-        Error: err,
-      });
-    });
-};
+const deleteParkingAgentById = async(req, res) => {
+  let dataas=await bookingSchema.find({agentId:req.params.id})
+  if(dataas.length>0){
 
-// Delete Parking Agent by ID
-const activateParkingAgentById = (req, res) => {
-  ParkingAgent.findByIdAndUpdate(req.params.id,{isActive:false})
+    return    res.json({
+      status: 200,
+      msg: "This Agenst Cannot be deleted as he has some parking Bokings",
+      data: null,
+    });
+  }
+  ParkingAgent.findByIdAndDelete(req.params.id)
     .then((data) => {
       res.json({
         status: 200,
