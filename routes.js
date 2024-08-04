@@ -143,6 +143,7 @@ router.post('/viewSlotBookingByCustId/:id', slotBooking.viewSlotBookingByCustId)
 router.post('/viewPendingBookingReqsByAgentId/:id', slotBooking.viewPendingBookingReqsByAgentId);
 router.post('/viewTodysApprovedBookingByAgentId/:id', slotBooking.viewTodysApprovedBookingByAgentId);
 router.post('/viewTodysPendingBookingByAgentId/:id', slotBooking.viewTodysPendingBookingByAgentId);
+router.post('/viewApprovedBookingByAgentId/:id', slotBooking.viewApprovedBookingByAgentId);
 router.post('/deleteSlotBookingById/:id', slotBooking.deleteSlotBookingById);
 router.post('/approveSlotBookingById/:id', slotBooking.approveSlotBookingById);
 router.post('/rejectSlotBookingById/:id', slotBooking.rejectSlotBookingById);

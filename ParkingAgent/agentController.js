@@ -58,9 +58,13 @@ const registerParkingAgent = (req, res) => {
 // Parking Agent Login
 const loginParkingAgent = (req, res) => {
   const { email, password } = req.body;
+console.log('log',req.body);
 
   ParkingAgent.findOne({ email })
+
     .then((data) => {
+      console.log('data',data);
+      
       if (!data) {
         return res.json({
           status: 405,

@@ -59,9 +59,10 @@ const viewSlotBookings = (req, res) => {
 //check if slots are fre
 const checkSlotAvailability = (req, res) => {
     paSchema.findById(req.params.id)
+    
      
       .then((data) => {
-        if (data.slots < req.body.carCount) {
+        if (data.slots > req.body.carCount) {
           res.json({
             status: 200,
             msg: "you can approve parking",
@@ -310,6 +311,35 @@ const approveSlotBookingById = (req, res) => {
         });
       });
   };
+
+
+  const viewApprovedBookingByAgentId = (req, res) => {
+    SlotBooking.find({agentId:req.params.id,status:'approved'})
+      .populate('paId')
+      .populate('custId')
+      .populate('agentId')
+      .then((data) => {
+        if (data) {
+          res.json({
+            status: 200,
+            msg: "Data obtained successfully",
+            data: data,
+          });
+        } else {
+          res.json({
+            status: 404,
+            msg: "Slot booking not found",
+          });
+        }
+      })
+      .catch((err) => {
+        res.json({
+          status: 500,
+          msg: "Error obtaining data",
+          Error: err,
+        });
+      });
+  };
   
 
   
@@ -324,5 +354,6 @@ module.exports = {
   viewTodysPendingBookingByAgentId,
   approveSlotBookingById,
   rejectSlotBookingById,
-  checkSlotAvailability
+  checkSlotAvailability,
+  viewApprovedBookingByAgentId
 };
