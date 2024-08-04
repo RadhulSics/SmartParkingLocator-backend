@@ -124,7 +124,6 @@ router.post('/forgotPwd', parkingAgents.forgotPwd);
 router.post('/approveParkingAgent/:id', parkingAgents.approveParkingAgent);
 router.post('/rejectParkingAgent/:id', parkingAgents.rejectParkingAgent);
 router.post('/viewPendingParkingAgents', parkingAgents.viewPendingParkingAgents);
-router.post('/viewPendingParkingAgents', parkingAgents.activateParkingAgentById);
 
 
 //parkingArea

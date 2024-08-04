@@ -208,7 +208,7 @@ const deleteParkingAgentById = async(req, res) => {
 
     return    res.json({
       status: 200,
-      msg: "This Agenst Cannot be deleted as he has some parking Bokings",
+      msg: "This Agent Cannot be deleted as he has some parking Bookings",
       data: null,
     });
   }
@@ -216,7 +216,7 @@ const deleteParkingAgentById = async(req, res) => {
     .then((data) => {
       res.json({
         status: 200,
-        msg: "Data removed successfully",
+        msg: "Removed successfully",
         data: data,
       });
     })
