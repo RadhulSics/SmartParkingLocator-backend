@@ -203,7 +203,26 @@ const viewParkingAgentById = (req, res) => {
 
 // Delete Parking Agent by ID
 const deleteParkingAgentById = (req, res) => {
-  ParkingAgent.findByIdAndDelete(req.params.id)
+  ParkingAgent.findByIdAndUpdate(req.params.id,{isActive:false})
+    .then((data) => {
+      res.json({
+        status: 200,
+        msg: "Data removed successfully",
+        data: data,
+      });
+    })
+    .catch((err) => {
+      res.json({
+        status: 500,
+        msg: "Error deleting data",
+        Error: err,
+      });
+    });
+};
+
+// Delete Parking Agent by ID
+const activateParkingAgentById = (req, res) => {
+  ParkingAgent.findByIdAndUpdate(req.params.id,{isActive:false})
     .then((data) => {
       res.json({
         status: 200,
