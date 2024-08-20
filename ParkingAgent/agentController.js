@@ -231,9 +231,9 @@ const deleteParkingAgentById = async(req, res) => {
 
 // Forgot Password
 const forgotPwd = (req, res) => {
-  const { email, newPassword } = req.body;
+  const { email, password } = req.body;
 
-  ParkingAgent.findOneAndUpdate({ email }, { password: newPassword })
+  ParkingAgent.findOneAndUpdate({ email }, { password: password })
     .then((data) => {
       if (data) {
         res.json({
