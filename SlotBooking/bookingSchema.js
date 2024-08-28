@@ -23,7 +23,11 @@ const parkingAreaSchema = new mongoose.Schema({
   status:{
     type:String,
     default:'pending'
-  }
+  },
+  vehicleNumber:{
+    type:String,
+    required:true
+  },
  
    
 });
