@@ -6,7 +6,8 @@ const createSlotBooking = (req, res) => {
     paId: req.body.paId,
     custId: req.body.custId,
     date: new Date(),
-    agentId: req.body.agentId
+    agentId: req.body.agentId,
+    vehicleNumber:req.body.vehicleNumber
   });
 
   newSlotBooking
